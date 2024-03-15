@@ -23,22 +23,30 @@ minikube start --kubernetes-version=v1.26.3
 Build and deploy applications:
 
 ```shell
-docker build -f app1/Dockerfile -t docker.io/martinheinz/python-debugging-app1:v1.0 app1
-docker build -f app2/Dockerfile -t docker.io/martinheinz/python-debugging-app2:v1.0 app2
+docker build -f app1/Dockerfile -t 10.1.1.3:5000/python-debugging-app1:v1.0 app1
+docker build -f app2/Dockerfile -t 10.1.1.3:5000/python-debugging-app2:v1.0 app2
 
-minikube image load docker.io/martinheinz/python-debugging-app1:v1.0
-minikube image load docker.io/martinheinz/python-debugging-app2:v1.0
+
+docker push 10.1.1.3:5000/python-debugging-app1:v1.0
+docker push 10.1.1.3:5000/python-debugging-app2:v1.0
+
+minikube image load 10.1.1.3:5000/python-debugging-app1:v1.0
+minikube image load 10.1.1.3:5000/python-debugging-app2:v1.0
 
 # ... or docker push ...
 
+kubectl delete -f deployment.yaml
 kubectl apply -f deployment.yaml
+
 ```
 
 Build debugger image:
 
 ```shell
-docker build -f debugger.Dockerfile -t docker.io/martinheinz/python-debugger:v1.0 .
-minikube image load docker.io/martinheinz/python-debugger:v1.0
+docker build -f debugger.Dockerfile -t 10.1.1.3:5000/python-debugger:v1.0 .
+docker push 10.1.1.3:5000/python-debugger:v1.0
+
+minikube image load 10.1.1.3:5000/python-debugger:v1.0
 ```
 
 To debug:

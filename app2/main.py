@@ -4,4 +4,4 @@ app = FastAPI()
 
 @app.get("/api/test")
 def test_api():
-    return {"key": "some data"}
+    return {"key": "some data from AP2"}

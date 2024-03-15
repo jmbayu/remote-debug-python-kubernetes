@@ -9,4 +9,4 @@ API = os.environ.get("API", "")
 @app.get("/")
 def sample_endpoint():
     r = requests.get(f"{API}/api/test")
-    return {"data": r.json()}
+    return {"data @ app1": r.json()}
