@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 import os
 import requests
+from middleware.request_middleware import RequestContextLogMiddleware
 
 app = FastAPI()
+
+app.add_middleware(RequestContextLogMiddleware)
 
 API = os.environ.get("API", "")
 

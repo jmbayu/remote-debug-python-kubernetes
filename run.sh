@@ -1,8 +1,12 @@
-docker build -f app1/Dockerfile -t 10.1.1.3:5000/python-debugging-app1:v1.0 app1
-docker build -f app2/Dockerfile -t 10.1.1.3:5000/python-debugging-app2:v1.0 app2
+docker login  10.1.1.101:5000
+# admin 
+# regS3cr3tP4ss
 
-docker push 10.1.1.3:5000/python-debugging-app1:v1.0
-docker push 10.1.1.3:5000/python-debugging-app2:v1.0
+docker build -f app1/Dockerfile -t 10.1.1.101:5000/python-debugging-app1:v1.0 app1
+docker build -f app2/Dockerfile -t 10.1.1.101:5000/python-debugging-app2:v1.0 app2
+
+docker push 10.1.1.101:5000/python-debugging-app1:v1.0
+docker push 10.1.1.101:5000/python-debugging-app2:v1.0
 
 kubectl delete -f deployment.yam
 kubectl apply -f deployment.yaml

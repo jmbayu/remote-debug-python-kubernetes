@@ -14,7 +14,7 @@ PATCH=$(cat <<EOF
   "spec": {
     "ephemeralContainers": [
       {
-        "image": "10.1.1.3:5000/python-debugger:v1.0",
+        "image": "10.1.1.101:5000/python-debugger:v1.0",
         "name": "debugger",
         "command": [
           "sleep"
